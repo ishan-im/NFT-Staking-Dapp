@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
@@ -7,6 +8,12 @@ const Home: NextPage = () => {
   const router = useRouter();
 
   return (
+    <>
+    <Head>
+      <title>thirdweb Deploy - Custom Staking Contract</title>
+      <meta name="description" content="thirdweb Deploy - Custom Staking Contract" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <div className={styles.container}>
       {/* Top Section */}
       <h1 className={styles.h1}>thirdweb Deploy - Custom Staking Contract</h1>
@@ -28,6 +35,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

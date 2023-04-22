@@ -19,7 +19,9 @@ import {
   tokenContractAddressERC20,
 } from '../consts/contractAddresses'
 import styles from '../styles/Home.module.css'
+import { log } from 'console'
 
+import Head from 'next/head'
 
 const Stake: NextPage = () => {
   const address = useAddress()
@@ -67,6 +69,8 @@ const [nftId, setNftId] = useState<any>([])
       const stakeInfo = await stackContract?.call('getStakeInfoForToken', [0,address])
 
       
+      
+
       setClaimableRewards(stakeInfo[1])
     }
 
@@ -97,6 +101,12 @@ const [nftId, setNftId] = useState<any>([])
   }
 
   return (
+    <>
+     <Head>
+      <title>Stacke Contract</title>
+      <meta name="description" content="thirdweb Deploy - Custom Staking Contract" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <div className={styles.container}>
       <h1 className={styles.h1}>Stake Your NFTs</h1>
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
@@ -178,6 +188,7 @@ const [nftId, setNftId] = useState<any>([])
         </>
       )}
     </div>
+    </>
   )
 }
 
