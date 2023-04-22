@@ -129,7 +129,7 @@ const [nftId, setNftId] = useState<any>([])
 
 
           <Web3Button
-            action={(contract) => contract.call('claimRewards',[1])}
+            action={(contract) => contract.call('claimRewards',[0])}
             contractAddress={stakingContractAddress}
           >
             Claim Rewards 
