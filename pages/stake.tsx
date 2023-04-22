@@ -24,46 +24,41 @@ import styles from '../styles/Home.module.css'
 const Stake: NextPage = () => {
   const address = useAddress()
 
-  console.log('address', address)
+
 
   const { contract: nftDropContract } = useContract(
     nftContractAddress,
     'edition-drop'
   )
 
-  console.log('nftDropContract', nftDropContract)
+
 
   const { contract: tokenContract } = useContract(tokenContractAddressERC20, 'token')
 
-  console.log('tokenContract', tokenContract)
+ 
 
   const { contract: stackContract, isLoading } = useContract(stakingContractAddress)
 
-  console.log('====================================')
-  console.log('stackContract', stackContract)
-  console.log('====================================')
+
 
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address)
 
-  console.log(ownedNfts, 'data: ownedNfts')
 
   const { data: tokenBalance } = useTokenBalance(tokenContract, address)
 
-  console.log(tokenBalance, 'tokenBalance')
+
 
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>()
 
-  console.log(claimableRewards, 'claimableRewards')
+  
 
   const { data: stakedTokens } = useContractRead(stackContract, 'getStakeInfo', [address] )
 
-  console.log(stakedTokens, 'stakedTokens')
+ 
 
 const [nftId, setNftId] = useState<any>([])
 
-console.log('====================================');
-console.log(nftId, 'nftId');
-console.log('====================================');
+
 
   useEffect(() => {
     if (!stackContract|| !address) return
@@ -71,7 +66,7 @@ console.log('====================================');
     const loadClaimableRewards = async () => {
       const stakeInfo = await stackContract?.call('getStakeInfoForToken', [0,address])
 
-      console.log(stakeInfo, 'stakeInfo')
+      
       setClaimableRewards(stakeInfo[1])
     }
 
